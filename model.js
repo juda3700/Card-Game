@@ -4,7 +4,7 @@ let model = {
     deck: [],
     playerHand: [],
     compHand: [],
-    discardPile: [],
+    //discardPile: [],
     state: "playerTurn",
 }
 
@@ -18,13 +18,13 @@ function initModel() {
     // Arrays in JavaScript have a pop() method that will remove and return the last
     // item in the array. This works well for transferring a card from the deck to a
     // player's hand.
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 2; i++) {
         model.playerHand[i] = model.deck.pop()
         model.compHand[i] = model.deck.pop()
     }
 
     // Add a card to the discard pile
-    model.discardPile[0] = model.deck.pop()
+    //model.discardPile[0] = model.deck.pop()
 }
 
 // This function will create an array representing all 52 cards in a standard deck
@@ -65,10 +65,15 @@ function shuffle(cards) {
     return cards
 }
 
+function getScore(hand){
+    var total = 0
+    for(i = 0, )
+}
+
 // ------------- Helper Functions - Used to more easily access data in the model ------------ //
 
 // Return the top (ie, visible) card of the discard pile
-function getShowingCard() {
-    let lastIndex = model.discardPile.length-1
-    return model.discardPile[lastIndex]
-}
+// function getShowingCard() {
+//     let lastIndex = model.discardPile.length-1
+//     return model.discardPile[lastIndex]
+// }
