@@ -14,11 +14,23 @@ function render() {
     layer = new Konva.Layer() // Create a fresh layer
     stage.add(layer) // Add the new layer to the stage
     addGrid(Konva, layer) // Can be removed/commented when game is complete
-    renderChoices()
+    if(model.state =="playerTurn"){
+        renderChoices()
+    }   
     renderPlayerHand()
     renderComputerHand()
+    if(model.state == 'playerBust'){
+        renderPlayerBust()
+    }
     //renderDiscardPile()
     //renderDeck()
+    if(model.state == 'playerWin'){
+        renderPlayerWin()
+    }
+    if(model.state == 'compWin'){
+        renderPlayerLose()
+    }
+
 }
 
 function renderPlayerHand() {
@@ -41,8 +53,8 @@ function renderPlayerHand() {
 
 function renderComputerHand() {
     for (let i = 0; i < model.compHand.length; i++) {
-        if(i== 0){
-            var image = getRawCardImage(model.playerHand[i])
+        if( i == 0 || model.state == 'playerWin' || model.state == 'compWin'){
+            var image = getRawCardImage(model.compHand[i])
         }
         else{
             var image = rawCardBackImage
@@ -75,6 +87,39 @@ function renderChoices(){
     layer.add(stay)
     hit.on('click', handleHit)
     stay.on('click', handleStay)
+}
+
+function renderPlayerBust(){
+    var bust = new Konva.Text({
+        x: 500,
+        y: 500, 
+        text:'YOU BUST',
+        fontSize: 100,
+        fill: 'black',
+    })
+    layer.add(bust)
+}
+
+function renderPlayerWin(){
+    var win = new Konva.Text({
+        x: 500,
+        y: 500, 
+        text:'YOU WIN',
+        fontSize: 100,
+        fill: 'red',
+    })
+    layer.add(win)
+}
+
+function renderPlayerLose(){
+    var lose = new Konva.Text({
+        x: 500,
+        y: 500, 
+        text:'YOU LOSE',
+        fontSize: 100,
+        fill: 'black',
+    })
+    layer.add(lose)
 }
 
 
