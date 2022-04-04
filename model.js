@@ -72,7 +72,10 @@ function getScore(hand) {
         if(value == 'Jack'||value == 'Queen' || value =='King'){
             total += 10 
         }
-        else if(value == 'Ace'){
+        else if(value == 'Ace'&& total > 11){
+            total += 1
+        }
+        else if(value == 'Ace'&& total <= 11){
             total += 1
         }
         else{

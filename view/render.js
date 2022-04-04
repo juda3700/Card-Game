@@ -26,9 +26,11 @@ function render() {
     //renderDeck()
     if(model.state == 'playerWin'){
         renderPlayerWin()
+        renderScore()
     }
     if(model.state == 'compWin'){
         renderPlayerLose()
+        renderScore()
     }
 
 }
@@ -121,7 +123,26 @@ function renderPlayerLose(){
     })
     layer.add(lose)
 }
+function renderScore(){
 
+    var comp = new Konva.Text({
+        x: 200,
+        y: 300, 
+        text: getScore(model.compHand),
+        fontSize: 100,
+        fill: 'black',
+    })
+    layer.add(comp)
+
+    var player = new Konva.Text({
+        x: 200,
+        y: 200, 
+        text: getScore(model.playerHand),
+        fontSize: 100,
+        fill: 'red',
+    })
+    layer.add(player)
+}
 
 // function renderDiscardPile() {
 
