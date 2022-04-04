@@ -65,9 +65,22 @@ function shuffle(cards) {
     return cards
 }
 
-function getScore(hand){
+function getScore(hand) {
     var total = 0
-    for(i = 0, )
+    for  (let i = 0; i < hand.length; i++) {
+        var value = hand[i].value
+        if(value == 'Jack'||value == 'Queen' || value =='King'){
+            total += 10 
+        }
+        else if(value == 'Ace'){
+            total += 1
+        }
+        else{
+            total = total + value
+        }
+        
+    }
+    return total
 }
 
 // ------------- Helper Functions - Used to more easily access data in the model ------------ //

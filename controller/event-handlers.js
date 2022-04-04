@@ -42,9 +42,14 @@
 // }
 
 function handleHit(){
+
     dealCardToPlayer()
+    if(getScore(model.playerHand) > 21){
+        model.state = 'playerBust'
+    }
     render()
 }
 function handleStay(){
+    compPlay()
     render()
 }
